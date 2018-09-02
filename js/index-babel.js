@@ -1,0 +1,75 @@
+let movieKeywords;
+
+//Check if local storage exists
+if (localStorage.getItem('searchValue')) {
+    let storage = localStorage.getItem('searchValue');
+    document.querySelector('#movie-title').value = storage;
+    movieKeywords = storage;
+    searchQuery(storage);
+}
+
+//Capture search keywords
+document.querySelector(".movie-search").addEventListener('submit', function(event){
+    event.preventDefault();
+    movieKeywords = document.querySelector('#movie-title').value;
+    localStorage.setItem('searchValue', movieKeywords);
+    console.log(localStorage.getItem('searchValue'));
+    searchQuery(movieKeywords);
+});
+
+//Run search query using keywords
+function searchQuery (keywords) {
+    let url = 'https://api.themoviedb.org/3/search/movie?api_key=47446e800215d7d9fd79faa6daf8518e&query=' + keywords + '';
+
+    fetch(url)
+        .then(response => response.json())
+
+        .then(responseAsJson => {
+
+            let imageURL = 'https://image.tmdb.org/t/p/w1280/'
+            const noPoster = 'https://images.pexels.com/photos/274937/pexels-photo-274937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            const movieContainer = document.querySelector('#movie-container');
+            let results = responseAsJson.results;
+
+            if (results.length != 0) {
+                movieContainer.innerHTML="<h2> Results for " + movieKeywords + "</h2>";
+            } else {
+                movieContainer.innerHTML="<h2> No results for " + movieKeywords + "</h2>";
+            }
+
+            let movie = '<ul>';
+            for (let i = 0; i < results.length; i++) {
+
+                movie += '<li>'
+                if (results[i].poster_path != null) {
+                    movie += '<img src="' + imageURL + results[i].poster_path + '" alt="' + results[i].title + '">';
+                } else {
+                    movie += '<img src="' + noPoster + '" alt="' + results[i].title + '">';
+                }
+
+                movie += '<div class="movieDetails"><h3>' + results[i].title + '</h3>'
+                movie += '<p>' + results[i].release_date + '</p></div>'
+                movie += '</li>'
+            }
+
+            movie += '</ul>';
+            movieContainer.insertAdjacentHTML('beforeEnd', movie);
+
+        })
+        .catch( error => {
+            console.log('Error: ', error)
+    })
+}
+
+//Hamburger menu
+document.querySelector(".hamburger").addEventListener('click', function(){
+    document.querySelector(".hamburger").style.display = "none";
+    document.querySelector(".close").style.display = "block";
+    document.querySelector(".menuList").style.display = "block";
+});
+
+document.querySelector(".close").addEventListener('click', function(){
+    document.querySelector(".close").style.display = "none";
+    document.querySelector(".hamburger").style.display = "block";
+    document.querySelector(".menuList").style.display = "none";
+});

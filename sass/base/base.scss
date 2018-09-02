@@ -1,0 +1,226 @@
+//MAIN
+@import "../main";
+
+
+
+*{
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+body{
+	background: #CCC;
+	color: #FFF;
+  @include fonts($fontFamily, $fontSize, $fontWeight);
+	position: relative;
+}
+
+
+
+/* TYPOGRAPHY ================================== */
+h1, h2{
+	line-height: 1;
+	text-transform: capitalize;
+}
+
+h1{
+  color: $colorWhite;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h2{
+	font-size: 17px;
+}
+
+strong, em{
+	color: #666666;
+}
+
+p{
+	color: $colorWhite;
+  font-size: .8em;
+}
+
+
+
+/* BASE STRUCTURE =============================== */
+.container{
+  background: $colorWhite;
+  @extend %center-element;
+  padding-bottom: 170px;
+  position: relative;
+  width: 1000px;
+}
+
+
+
+/* HEADER ================================== */
+header{
+  background: url(../img/concert-photo.jpg) no-repeat 0 -180px / cover;
+  height: 350px;
+  margin-bottom: 40px;
+  padding: 20px 9%;
+	@extend %full-width;
+
+  /*LOGO*/
+  > div:nth-child(1){
+  	@extend %inline-block;
+  	width: 30%;
+
+    a{
+      img{
+        float: left;
+        margin-right: 1%;
+        width: 6.5%;
+      }
+    }
+  }
+
+  /*NAVIGATION*/
+  nav{
+    float: right;
+  	width: 210px;
+    margin-right: 0;
+
+    ul{
+      display: flex;
+      flex-direction: row;
+
+
+      li{
+      	padding: 3px 3%;
+      	@extend %center-text;
+
+        a{
+          color: $colorWhite;
+          font-size: .9em;
+          text-transform: uppercase;
+          text-decoration: none;
+
+          &:last-child{
+            margin-left: 7%;
+          }
+
+          img{
+            float: left;
+            margin-top: -15%;
+          }
+        }
+      }
+    }
+  }
+
+  nav ul li:nth-child(4), nav ul li:last-child{
+  	border-right: 0;
+  }
+
+  nav ul li a:hover, .currentLink{
+  	color: $colorGold;
+  }
+
+  .currentLink{
+    font-weight: bold;
+  }
+}
+
+/*SEARCH FIELD*/
+form{
+  display: flex;
+  flex-direction: column;
+  @extend %center-element;
+  margin-top: 80px;
+  width: 500px;
+
+  label{
+    @extend %background-colorCharcoal;
+    font-size: .9em;
+    padding: 5px;
+    width: 57%;
+  }
+
+  div{
+    @include formDiv();
+
+    #searchInput{
+      flex: 1;
+      padding: 2% 3%;
+
+      &[placeholder]{
+        opacity: .4;
+      }
+    }
+
+    button{
+      @extend %cursor-pointer;
+      background: transparent;
+    }
+  }
+
+  p{
+    @include formPara($colorRed);
+  }
+}
+
+
+
+h2{
+  @include headerTwo($colorCharcoal);
+}
+
+
+
+section{
+  @extend %background-colorWhite;
+  padding: 0 10%;
+  margin-bottom: 4%;
+
+  article{
+    margin-bottom: 20px;
+    margin-right: 3%;
+    display: inline-block;
+    width: 30%;
+
+    img{
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    p{
+      background: $colorCharcoal;
+      padding: 6% 5%;
+      -webkit-margin-before: -.4em;
+
+      span{
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-bottom: 5%;
+        color: $colorGold;
+      }
+    }
+  }
+}
+
+button{
+  @include goldBTN();
+}
+
+
+
+/* FOOTER =============================== */
+footer{
+	@include footerStyles($colorCharcoal);
+
+  p{
+    font-size: .8em;
+  	@extend %center-text;
+    @extend %center-element;
+    width: 60%;
+  }
+}
