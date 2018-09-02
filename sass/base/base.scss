@@ -140,6 +140,7 @@ form{
 
   label{
     @extend %background-colorCharcoal;
+    @extend %inline-block;
     font-size: .9em;
     padding: 5px;
     width: 57%;
@@ -184,7 +185,7 @@ section{
   article{
     margin-bottom: 20px;
     margin-right: 3%;
-    display: inline-block;
+    @extend %inline-block;
     width: 30%;
 
     img{

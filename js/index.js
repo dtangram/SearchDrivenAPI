@@ -2,6 +2,7 @@ const request = new XMLHttpRequest();
 const searchField = document.getElementById("searchInput");
 const magnifyGlass = document.querySelector("header form div button");
 const headerTwo = document.querySelector(".container > h2");
+const submit = document.querySelector(".container > button");
 
 function queryInput(){
   const api = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" + searchField.value + "&api_key=eed52d1ba57c50e9025f090b596fd40f&format=json";
@@ -75,8 +76,7 @@ function runQuery(url){
   request.send();
 }
 
-const submit = document.querySelector(".container > button");
-
+//GOLD BUTTON AT BOTTOM
 function queryBTN(){
   let query = searchField.value;
   const limit = "10";

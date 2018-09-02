@@ -14,7 +14,7 @@ header nav ul li, button, footer p {
 header, form div {
   width: 100%; }
 
-header > div:nth-child(1), form div {
+header > div:nth-child(1), form label, form div, section article {
   display: inline-block; }
 
 form div button, button {
@@ -22,6 +22,9 @@ form div button, button {
 
 form p, h2 {
   font-weight: bold; }
+
+form p, h2 {
+  opacity: 0; }
 
 * {
   border: 0;
@@ -129,20 +132,18 @@ form {
     form div button {
       background: transparent; }
   form p {
-    opacity: 0;
     color: #FF0000;
     font-size: .9em;
     padding: 10px;
     text-transform: uppercase; }
 
 h2 {
-  opacity: 0;
   background: #2B2B2B;
+  display: inline-block;
   margin-bottom: 15px;
   margin-left: 10%;
   padding: 8px .5%;
-  text-transform: capitalize;
-  width: 30%; }
+  text-transform: capitalize; }
 
 section {
   padding: 0 10%;
@@ -150,7 +151,6 @@ section {
   section article {
     margin-bottom: 20px;
     margin-right: 3%;
-    display: inline-block;
     width: 30%; }
     section article img {
       margin-bottom: 0;

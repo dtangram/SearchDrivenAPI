@@ -8,30 +8,30 @@
   @extend %background-colorWhite;
   display: flex;
   flex-direction: row;
-  padding: 2.5px 0;
   @extend %full-width;
   @extend %inline-block;
+  padding: 2.5px 0;
 }
 
 @mixin formPara($colorRed){
-  opacity: 0;
   @extend %background-colorCharcoal;
   color: $colorRed;
   font-size: .9em;
   @extend %fontWeight-bold;
+  @extend %opacityZero;
   padding: 10px;
   text-transform: uppercase;
 }
 
 @mixin headerTwo($colorCharcoal){
-  opacity: 0;
   background: $colorCharcoal;
+  @extend %inline-block;
   @extend %fontWeight-bold;
   margin-bottom: 15px;
   margin-left: 10%;
+  @extend %opacityZero;
   padding: 8px .5%;
   text-transform: capitalize;
-  width: 30%;
 }
 
 @mixin goldBTN(){
